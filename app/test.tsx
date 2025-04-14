@@ -154,7 +154,15 @@ const AsistenciaEmpleados = () => {
             year += 2000;
           }
           
+          // Crear la fecha asumiendo formato DD/MM/YYYY (formato europeo/latinoamericano)
           const date = new Date(year, parseInt(parts[1]) - 1, parseInt(parts[0]));
+          
+          // Verificar si la fecha es válida
+          if (isNaN(date.getTime())) {
+            console.error(`Fecha inválida: ${dateStr}`);
+            return null;
+          }
+          
           return date.getDay();
         }
         
@@ -487,26 +495,7 @@ const AsistenciaEmpleados = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div> t
-      
-      <p className="ext-center">Total de empleados: {empleados.length}</p>
-      
-      {/* Gráfica de asistencia por día */}
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Empleados con asistencia por día</h3>
-        <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={dataBarChart}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip formatter={(value) => [`${value} empleados`, 'Empleados']} />
-              <Legend />
-              <Bar dataKey="empleados" name="Empleados" fill="#3b82f6" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
+      </div> 
       
       {/* Controles de filtrado */}
       <div className="flex flex-col md:flex-row gap-4 mb-4">

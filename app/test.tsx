@@ -489,7 +489,7 @@ const AsistenciaEmpleados = () => {
         </div>
       </div> t
       
-      <p className="ext-center">Periodo: Marzo 2025 - Total de empleados: {empleados.length}</p>
+      <p className="ext-center">Total de empleados: {empleados.length}</p>
       
       {/* Gráfica de asistencia por día */}
       <div className="mb-6">
